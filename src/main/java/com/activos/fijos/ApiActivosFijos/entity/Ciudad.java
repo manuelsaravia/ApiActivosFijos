@@ -1,13 +1,10 @@
-package com.activos.fijos.entity;
+package com.activos.fijos.ApiActivosFijos.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,21 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "area")
-public class Area {
-
+@Table(name = "ciudad")
+public class Ciudad {
+	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="nombre", nullable=false, unique=true)
 	private String nombre;
 	
-	@JoinColumn(name = "fk_ciudad", nullable = false)
-	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
-	private Ciudad ciudad;
-	
 	@Column(name="estado")
 	private int estado;
+
 }

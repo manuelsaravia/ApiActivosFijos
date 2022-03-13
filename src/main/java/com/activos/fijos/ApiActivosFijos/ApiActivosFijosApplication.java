@@ -1,4 +1,4 @@
-package com.activos.fijos.main;
+package com.activos.fijos.ApiActivosFijos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

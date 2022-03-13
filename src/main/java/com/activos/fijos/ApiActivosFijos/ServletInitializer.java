@@ -1,4 +1,4 @@
-package com.activos.fijos.main;
+package com.activos.fijos.ApiActivosFijos;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

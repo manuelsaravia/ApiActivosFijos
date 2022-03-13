@@ -1,4 +1,4 @@
-package com.activos.fijos.entity;
+package com.activos.fijos.ApiActivosFijos.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tipoentrega")
-public class TipoEntrega {
+@Table(name = "tipoactivo")
+public class TipoActivo {
 
 	@Id
 	@Column(name="id")

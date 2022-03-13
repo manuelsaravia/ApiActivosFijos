@@ -1,4 +1,4 @@
-package com.activos.fijos.entity;
+package com.activos.fijos.ApiActivosFijos.entity;
 
 import java.sql.Date;
 

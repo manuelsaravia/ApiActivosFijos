@@ -1,4 +1,4 @@
-package com.activos.fijos.entity;
+package com.activos.fijos.ApiActivosFijos.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,25 +18,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "persona")
-public class Persona {
+@Table(name = "area")
+public class Area {
 
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre", nullable=false)
+	@Column(name="nombre", nullable=false, unique=true)
 	private String nombre;
 	
-	@Column(name="identificacion", nullable=false, unique=true)
-	private String identificacion;
-	
-	@JoinColumn(name = "fk_area", nullable = false)
+	@JoinColumn(name = "fk_ciudad", nullable = false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
-	private Area area;
+	private Ciudad ciudad;
 	
 	@Column(name="estado")
 	private int estado;
-	
 }
