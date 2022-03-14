@@ -35,10 +35,10 @@ public class ActivoFijo {
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private TipoActivo tipoActivo;
 	
-	@Column(name="serial", unique=true)
+	@Column(name="serial", unique=true, nullable=false)
 	private String serial;
 	
-	@Column(name="numeroInternoInventario")
+	@Column(name="numeroInternoInventario" , unique=true, nullable=false)
 	private String numeroInternoInventario;
 	
 	@Column(name="peso")

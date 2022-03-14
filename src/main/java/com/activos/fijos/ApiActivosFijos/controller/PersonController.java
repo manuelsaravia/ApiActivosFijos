@@ -41,7 +41,7 @@ private static final Logger log = LoggerFactory.getLogger(CiudadController.class
 
 	@GetMapping("/getPersonas")
 	public ResponseEntity<Object> getPersonas() {
-		return this.getPersonas();
+		return this.iPersona.getPersonas();
 	}
 
 	@PostMapping("/setPersonaNombre")

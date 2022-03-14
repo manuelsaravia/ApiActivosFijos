@@ -7,7 +7,7 @@ import com.activos.fijos.ApiActivosFijos.ws.output.RespuestaGeneralWS;
 
 public interface IGestionarPersona {
 	
-public ResponseEntity<RespuestaGeneralWS> getPersonaId(int idPersona);
+	public ResponseEntity<RespuestaGeneralWS> getPersonaId(int idPersona);
 	
 	public ResponseEntity<RespuestaGeneralWS> getPersonaNombre(String nombre);
 	
