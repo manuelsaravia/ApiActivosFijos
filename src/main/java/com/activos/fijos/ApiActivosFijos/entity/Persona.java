@@ -32,7 +32,7 @@ public class Persona {
 	@Column(name="identificacion", nullable=false, unique=true)
 	private String identificacion;
 	
-	@JoinColumn(name = "fk_area", nullable = false)
+	@JoinColumn(name = "area", nullable = false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private Area area;
 	

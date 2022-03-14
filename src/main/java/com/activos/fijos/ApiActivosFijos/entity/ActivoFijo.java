@@ -31,7 +31,7 @@ public class ActivoFijo {
 	@Column(name="nombre", unique=true)
 	private String nombre;
 	
-	@JoinColumn(name="fk_tipo_activo", nullable=false)
+	@JoinColumn(name="tipoActivo", nullable=false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private TipoActivo tipoActivo;
 	

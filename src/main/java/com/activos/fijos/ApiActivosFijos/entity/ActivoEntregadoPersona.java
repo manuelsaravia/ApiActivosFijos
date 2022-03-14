@@ -28,11 +28,11 @@ public class ActivoEntregadoPersona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@JoinColumn(name="fk_tipo_entrega_persona", nullable=false)
+	@JoinColumn(name="tipoEntrega", nullable=false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private TipoEntrega tipoEntrega;
 	
-	@JoinColumn(name="fk_entrega_persona", nullable=false)
+	@JoinColumn(name="idEntregado", nullable=false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private Persona idEntregado;
 	
@@ -42,7 +42,7 @@ public class ActivoEntregadoPersona {
 	@Column(name = "fechaRetiro")
 	private Date fechaRetiro;
 	
-	@JoinColumn(name="fk_activo_fijo_persona", nullable=false)
+	@JoinColumn(name="activoFijo", nullable=false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private ActivoFijo activoFijo;
 

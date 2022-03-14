@@ -29,7 +29,7 @@ public class Area {
 	@Column(name="nombre", nullable=false, unique=true)
 	private String nombre;
 	
-	@JoinColumn(name = "fk_ciudad", nullable = false)
+	@JoinColumn(name = "ciudad", nullable = false)
 	@ManyToOne(optional = false,  fetch = FetchType.LAZY)
 	private Ciudad ciudad;
 	
