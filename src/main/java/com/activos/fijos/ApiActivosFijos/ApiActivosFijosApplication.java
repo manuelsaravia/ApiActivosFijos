@@ -9,5 +9,4 @@ public class ApiActivosFijosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiActivosFijosApplication.class, args);
 	}
-
 }

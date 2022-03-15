@@ -1,5 +1,7 @@
 package com.activos.fijos.ApiActivosFijos.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,16 @@ public class ActivoFijoController {
 	@GetMapping("getActivosFijos")
 	public ResponseEntity<Object> getActivoFijos(){
 		return this.iActivo.getActivoFijos();
+	}
+	
+	@GetMapping("getActivosFijosxFechaCompra")
+	public ResponseEntity<Object> getActivosFijosxFechaCompra(String fechaCompra){
+		return this.iActivo.getActivoFijosXFechaCompra(fechaCompra);
+	}
+	
+	@GetMapping("getActivosFijosxTipoActivo")
+	public ResponseEntity<Object> getActivosFijosxTipoActivo(int idTipo){
+		return this.iActivo.getActivoFijosXTipoActivo(idTipo);
 	}
 	
 	@PostMapping("setActivoFijo")

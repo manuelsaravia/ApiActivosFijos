@@ -399,4 +399,104 @@ public class ActivoFijoImpl implements IGestionarActivoFijo {
 		return respuesta;
 	}
 
+	@Override
+	public ResponseEntity<Object> getActivoFijosXFechaCompra(String fechaCompra) {
+		ResponseEntity<Object> respuesta = new ResponseEntity<>(new RespuestaGeneralWS(), HttpStatus.OK);
+		try {
+			if(fechaCompra == null) {
+				log.info("Fecha Compra no validos");
+				RespuestaGeneralWS respuestaDto = new RespuestaGeneralWS();
+				respuestaDto.setDescripcion("Fecha compra no validos");
+				return new ResponseEntity<>(respuestaDto, HttpStatus.BAD_REQUEST);
+			}
+			List<ActivoFijo> activos = this.repository.findByFechaCompra(fechaCompra);
+			if(activos == null || activos.isEmpty()) {
+				log.info("Listado de activos Fijos vacio");
+				return new ResponseEntity<>(new RespuestaGeneralWS("Busqueda sin resultados", null), HttpStatus.NOT_FOUND);
+			}
+			List<ActivoFijoWsOutput> listadoActivo = new ArrayList<>();
+			log.info("Recorriendo activos Fijos");
+			for(ActivoFijo nActivoFijo: activos) {
+				log.info("Preparando respuesta");
+				ActivoFijoWsOutput output = new ActivoFijoWsOutput();
+				output.setId(nActivoFijo.getId());
+				output.setNombre(nActivoFijo.getNombre());
+				output.setTipoActivo(nActivoFijo.getTipoActivo().getDescripcion());
+				output.setSerial(nActivoFijo.getSerial());
+				output.setNumeroInternoInventario(nActivoFijo.getNumeroInternoInventario());
+				output.setPeso(nActivoFijo.getPeso());
+				output.setAlto(nActivoFijo.getAlto());
+				output.setAncho(nActivoFijo.getAncho());
+				output.setLargo(nActivoFijo.getLargo());
+				output.setValorcompra(nActivoFijo.getValorCompra());
+				output.setFechaCompra(new java.util.Date(nActivoFijo.getFechaCompra().getTime()));
+				output.setEntregado(nActivoFijo.getEntregado()==1?true:false);
+				output.setEstado(nActivoFijo.getEstado()==1?true:false);
+				
+				listadoActivo.add(output);
+			}
+			
+			log.info("Preparando respuesta");
+			RespuestaGeneralWS respuestaDto = new RespuestaGeneralWS();
+			respuestaDto.setDescripcion("Consulta Exitosa");
+			respuestaDto.setObj(listadoActivo);
+			
+			respuesta = new ResponseEntity<>(respuestaDto, HttpStatus.OK);			
+		}catch(Exception e) {
+			log.info("Exeption");
+			return new ResponseEntity<>(new RespuestaGeneralWS("Error Inesperado", null), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return respuesta;
+	}
+
+	@Override
+	public ResponseEntity<Object> getActivoFijosXTipoActivo(int tipo) {
+		ResponseEntity<Object> respuesta = new ResponseEntity<>(new RespuestaGeneralWS(), HttpStatus.OK);
+		try {
+			if(tipo < 0) {
+				log.info("id Tipo no validos");
+				RespuestaGeneralWS respuestaDto = new RespuestaGeneralWS();
+				respuestaDto.setDescripcion("Id Tipo no validos");
+				return new ResponseEntity<>(respuestaDto, HttpStatus.BAD_REQUEST);
+			}
+			List<ActivoFijo> activos = this.repository.finddByTipoActivo(tipo);
+			if(activos == null || activos.isEmpty()) {
+				log.info("Listado de activos Fijos vacio");
+				return new ResponseEntity<>(new RespuestaGeneralWS("Busqueda sin resultados", null), HttpStatus.NOT_FOUND);
+			}
+			List<ActivoFijoWsOutput> listadoActivo = new ArrayList<>();
+			log.info("Recorriendo activos Fijos");
+			for(ActivoFijo nActivoFijo: activos) {
+				log.info("Preparando respuesta");
+				ActivoFijoWsOutput output = new ActivoFijoWsOutput();
+				output.setId(nActivoFijo.getId());
+				output.setNombre(nActivoFijo.getNombre());
+				output.setTipoActivo(nActivoFijo.getTipoActivo().getDescripcion());
+				output.setSerial(nActivoFijo.getSerial());
+				output.setNumeroInternoInventario(nActivoFijo.getNumeroInternoInventario());
+				output.setPeso(nActivoFijo.getPeso());
+				output.setAlto(nActivoFijo.getAlto());
+				output.setAncho(nActivoFijo.getAncho());
+				output.setLargo(nActivoFijo.getLargo());
+				output.setValorcompra(nActivoFijo.getValorCompra());
+				output.setFechaCompra(new java.util.Date(nActivoFijo.getFechaCompra().getTime()));
+				output.setEntregado(nActivoFijo.getEntregado()==1?true:false);
+				output.setEstado(nActivoFijo.getEstado()==1?true:false);
+				
+				listadoActivo.add(output);
+			}
+			
+			log.info("Preparando respuesta");
+			RespuestaGeneralWS respuestaDto = new RespuestaGeneralWS();
+			respuestaDto.setDescripcion("Consulta Exitosa");
+			respuestaDto.setObj(listadoActivo);
+			
+			respuesta = new ResponseEntity<>(respuestaDto, HttpStatus.OK);			
+		}catch(Exception e) {
+			log.info("Exeption");
+			return new ResponseEntity<>(new RespuestaGeneralWS("Error Inesperado", null), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return respuesta;
+	}
+
 }
